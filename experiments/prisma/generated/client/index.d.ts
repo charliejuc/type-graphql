@@ -32,7 +32,7 @@ export declare type PrismaVersion = {
   client: string
 }
 
-export declare const prismaVersion: PrismaVersion 
+export declare const prismaVersion: PrismaVersion
 
 /**
  * Utility Types
@@ -41,16 +41,16 @@ export declare const prismaVersion: PrismaVersion
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches a JSON object.
- * This type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from. 
+ * This type can be useful to enforce some input to be JSON-compatible or as a super-type to be extended from.
  */
 export declare type JsonObject = {[Key in string]?: JsonValue}
- 
+
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches a JSON array.
  */
 export declare interface JsonArray extends Array<JsonValue> {}
- 
+
 /**
  * From https://github.com/sindresorhus/type-fest/
  * Matches any valid JSON value.
@@ -61,9 +61,9 @@ export declare type JsonValue = string | number | boolean | null | JsonObject | 
  * Same as JsonObject, but allows undefined
  */
 export declare type InputJsonObject = {[Key in string]?: JsonValue}
- 
+
 export declare interface InputJsonArray extends Array<JsonValue> {}
- 
+
 export declare type InputJsonValue = undefined |  string | number | boolean | null | InputJsonObject | InputJsonArray
 
 declare type SelectAndInclude = {
@@ -152,7 +152,7 @@ export interface PrismaClientOptions {
    * ```
    * // Defaults to stdout
    * log: ['query', 'info', 'warn', 'error']
-   * 
+   *
    * // Emit as events
    * log: [
    *  { emit: 'stdout', level: 'query' },
@@ -178,7 +178,7 @@ export type LogDefinition = {
 }
 
 export type GetLogType<T extends LogLevel | LogDefinition> = T extends LogDefinition ? T['emit'] extends 'event' ? T['level'] : never : never
-export type GetEvents<T extends Array<LogLevel | LogDefinition>> = GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]> 
+export type GetEvents<T extends Array<LogLevel | LogDefinition>> = GetLogType<T[0]> | GetLogType<T[1]> | GetLogType<T[2]> | GetLogType<T[3]>
 
 export type QueryEvent = {
   timestamp: Date
@@ -200,7 +200,7 @@ export declare function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLe
 
 /**
  * ##  Prisma Client ʲˢ
- * 
+ *
  * Type-safe database client for TypeScript & Node.js (ORM replacement)
  * @example
  * ```
@@ -209,7 +209,7 @@ export declare function getLogLevel(log: Array<LogLevel | LogDefinition>): LogLe
  * const users = await prisma.user.findMany()
  * ```
  *
- * 
+ *
  * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md).
  */
 export declare class PrismaClient<
@@ -251,7 +251,7 @@ export declare class PrismaClient<
 
   /**
    * ##  Prisma Client ʲˢ
-   * 
+   *
    * Type-safe database client for TypeScript & Node.js (ORM replacement)
    * @example
    * ```
@@ -260,7 +260,7 @@ export declare class PrismaClient<
    * const users = await prisma.user.findMany()
    * ```
    *
-   * 
+   *
    * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md).
    */
   constructor(optionsArg?: T);
@@ -287,7 +287,7 @@ export declare class PrismaClient<
    * // Or
    * const result = await prisma.executeRaw('UPDATE User SET cool = $1 WHERE id = $2 ;', true, 1)
   * ```
-  * 
+  *
   * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
   */
   executeRaw<T = any>(query: string | TemplateStringsArray, ...values: any[]): Promise<number>;
@@ -301,7 +301,7 @@ export declare class PrismaClient<
    * // Or
    * const result = await prisma.queryRaw('SELECT * FROM User WHERE id = $1 OR email = $2;', 1, 'ema.il')
   * ```
-  * 
+  *
   * Read more in our [docs](https://github.com/prisma/prisma/blob/master/docs/prisma-client-js/api.md#raw-database-access).
   */
   queryRaw<T = any>(query: string | TemplateStringsArray, ...values: any[]): Promise<T>;
@@ -317,14 +317,14 @@ export declare class PrismaClient<
   get user(): UserDelegate;
 
   /**
-   * `prisma.post`: Exposes CRUD operations for the **post** model.
+   * `prisma.post`: Exposes CRUD operations for the **Post** model.
     * Example usage:
     * ```ts
     * // Fetch zero or more Posts
     * const posts = await prisma.post.findMany()
     * ```
     */
-  get post(): postDelegate;
+  get post(): PostDelegate;
 
   /**
    * `prisma.category`: Exposes CRUD operations for the **Category** model.
@@ -416,6 +416,88 @@ export type User = {
 }
 
 
+export type AggregateUser = {
+  count: number
+  avg: UserAvgAggregateOutputType | null
+  sum: UserSumAggregateOutputType | null
+  min: UserMinAggregateOutputType | null
+  max: UserMaxAggregateOutputType | null
+}
+
+export type UserAvgAggregateOutputType = {
+  id: number
+  age: number
+  balance: number
+  amount: number
+}
+
+export type UserSumAggregateOutputType = {
+  id: number
+  age: number
+  balance: number
+  amount: number
+}
+
+export type UserMinAggregateOutputType = {
+  id: number
+  age: number
+  balance: number
+  amount: number
+}
+
+export type UserMaxAggregateOutputType = {
+  id: number
+  age: number
+  balance: number
+  amount: number
+}
+
+
+export type UserAvgAggregateInputType = {
+  id?: true
+  age?: true
+  balance?: true
+  amount?: true
+}
+
+export type UserSumAggregateInputType = {
+  id?: true
+  age?: true
+  balance?: true
+  amount?: true
+}
+
+export type UserMinAggregateInputType = {
+  id?: true
+  age?: true
+  balance?: true
+  amount?: true
+}
+
+export type UserMaxAggregateInputType = {
+  id?: true
+  age?: true
+  balance?: true
+  amount?: true
+}
+
+export type AggregateUserArgs = {
+  count?: true
+  avg?: UserAvgAggregateInputType
+  sum?: UserSumAggregateInputType
+  min?: UserMinAggregateInputType
+  max?: UserMaxAggregateInputType
+}
+
+export type GetUserAggregateType<T extends AggregateUserArgs> = {
+  [P in keyof T]: P extends 'count' ? number : GetUserAggregateScalarType<T[P]>
+}
+
+export type GetUserAggregateScalarType<T extends any> = {
+  [P in keyof T]: P extends keyof UserAvgAggregateOutputType ? UserAvgAggregateOutputType[P] : never
+}
+
+
 
 export type UserSelect = {
   id?: boolean
@@ -424,12 +506,12 @@ export type UserSelect = {
   age?: boolean
   balance?: boolean
   amount?: boolean
-  posts?: boolean | FindManypostArgs
+  posts?: boolean | FindManyPostArgs
   role?: boolean
 }
 
 export type UserInclude = {
-  posts?: boolean | FindManypostArgs
+  posts?: boolean | FindManyPostArgs
 }
 
 export type UserGetPayload<
@@ -444,14 +526,14 @@ export type UserGetPayload<
     ? User  & {
       [P in TrueKeys<S['include']>]:
       P extends 'posts'
-      ? Array<postGetPayload<S['include'][P]>> : never
+      ? Array<PostGetPayload<S['include'][P]>> : never
     }
   : 'select' extends U
     ? {
       [P in TrueKeys<S['select']>]:P extends keyof User ? User[P]
-: 
+:
       P extends 'posts'
-      ? Array<postGetPayload<S['select'][P]>> : never
+      ? Array<PostGetPayload<S['select'][P]>> : never
     }
   : User
 : User
@@ -478,13 +560,13 @@ export interface UserDelegate {
    * @example
    * // Get all Users
    * const users = await prisma.user.findMany()
-   * 
+   *
    * // Get first 10 Users
    * const users = await prisma.user.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `id`
    * const userWithIdOnly = await prisma.user.findMany({ select: { id: true } })
-   * 
+   *
   **/
   findMany<T extends FindManyUserArgs>(
     args?: Subset<T, FindManyUserArgs>
@@ -499,7 +581,7 @@ export interface UserDelegate {
    *     // ... data to create a User
    *   }
    * })
-   * 
+   *
   **/
   create<T extends UserCreateArgs>(
     args: Subset<T, UserCreateArgs>
@@ -514,7 +596,7 @@ export interface UserDelegate {
    *     // ... filter to delete one User
    *   }
    * })
-   * 
+   *
   **/
   delete<T extends UserDeleteArgs>(
     args: Subset<T, UserDeleteArgs>
@@ -532,7 +614,7 @@ export interface UserDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   update<T extends UserUpdateArgs>(
     args: Subset<T, UserUpdateArgs>
@@ -547,7 +629,7 @@ export interface UserDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
   deleteMany<T extends UserDeleteManyArgs>(
     args: Subset<T, UserDeleteManyArgs>
@@ -565,7 +647,7 @@ export interface UserDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   updateMany<T extends UserUpdateManyArgs>(
     args: Subset<T, UserUpdateManyArgs>
@@ -596,12 +678,17 @@ export interface UserDelegate {
   count(args?: Omit<FindManyUserArgs, 'select' | 'include'>): Promise<number>
 
 
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregateUserArgs>(args: Subset<T, AggregateUserArgs>): Promise<GetUserAggregateType<T>>
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for User.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__UserClient<T> implements Promise<T> {
@@ -621,7 +708,7 @@ export declare class Prisma__UserClient<T> implements Promise<T> {
   constructor(_dmmf: DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
   readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
-  posts<T extends FindManypostArgs = {}>(args?: Subset<T, FindManypostArgs>): CheckSelect<T, Promise<Array<post>>, Promise<Array<postGetPayload<T>>>>;
+  posts<T extends FindManyPostArgs = {}>(args?: Subset<T, FindManyPostArgs>): CheckSelect<T, Promise<Array<Post>>, Promise<Array<PostGetPayload<T>>>>;
 
   private get _document();
   /**
@@ -824,10 +911,10 @@ export type UserArgs = {
 
 
 /**
- * Model post
+ * Model Post
  */
 
-export type post = {
+export type Post = {
   uuid: string
   createdAt: Date
   updatedAt: Date
@@ -840,8 +927,66 @@ export type post = {
 }
 
 
+export type AggregatePost = {
+  count: number
+  avg: PostAvgAggregateOutputType | null
+  sum: PostSumAggregateOutputType | null
+  min: PostMinAggregateOutputType | null
+  max: PostMaxAggregateOutputType | null
+}
 
-export type postSelect = {
+export type PostAvgAggregateOutputType = {
+  authorId: number
+}
+
+export type PostSumAggregateOutputType = {
+  authorId: number
+}
+
+export type PostMinAggregateOutputType = {
+  authorId: number
+}
+
+export type PostMaxAggregateOutputType = {
+  authorId: number
+}
+
+
+export type PostAvgAggregateInputType = {
+  authorId?: true
+}
+
+export type PostSumAggregateInputType = {
+  authorId?: true
+}
+
+export type PostMinAggregateInputType = {
+  authorId?: true
+}
+
+export type PostMaxAggregateInputType = {
+  authorId?: true
+}
+
+export type AggregatePostArgs = {
+  count?: true
+  avg?: PostAvgAggregateInputType
+  sum?: PostSumAggregateInputType
+  min?: PostMinAggregateInputType
+  max?: PostMaxAggregateInputType
+}
+
+export type GetPostAggregateType<T extends AggregatePostArgs> = {
+  [P in keyof T]: P extends 'count' ? number : GetPostAggregateScalarType<T[P]>
+}
+
+export type GetPostAggregateScalarType<T extends any> = {
+  [P in keyof T]: P extends keyof PostAvgAggregateOutputType ? PostAvgAggregateOutputType[P] : never
+}
+
+
+
+export type PostSelect = {
   uuid?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -854,39 +999,39 @@ export type postSelect = {
   metadata?: boolean
 }
 
-export type postInclude = {
+export type PostInclude = {
   author?: boolean | UserArgs
 }
 
-export type postGetPayload<
-  S extends boolean | null | undefined | postArgs,
+export type PostGetPayload<
+  S extends boolean | null | undefined | PostArgs,
   U = keyof S
 > = S extends true
-  ? post
+  ? Post
   : S extends undefined
   ? never
-  : S extends postArgs | FindManypostArgs
+  : S extends PostArgs | FindManyPostArgs
   ? 'include' extends U
-    ? post  & {
+    ? Post  & {
       [P in TrueKeys<S['include']>]:
       P extends 'author'
       ? UserGetPayload<S['include'][P]> : never
     }
   : 'select' extends U
     ? {
-      [P in TrueKeys<S['select']>]:P extends keyof post ? post[P]
-: 
+      [P in TrueKeys<S['select']>]:P extends keyof Post ? Post[P]
+:
       P extends 'author'
       ? UserGetPayload<S['select'][P]> : never
     }
-  : post
-: post
+  : Post
+: Post
 
 
-export interface postDelegate {
+export interface PostDelegate {
   /**
    * Find zero or one Post.
-   * @param {FindOnepostArgs} args - Arguments to find a Post
+   * @param {FindOnePostArgs} args - Arguments to find a Post
    * @example
    * // Get one Post
    * const post = await prisma.post.findOne({
@@ -895,29 +1040,29 @@ export interface postDelegate {
    *   }
    * })
   **/
-  findOne<T extends FindOnepostArgs>(
-    args: Subset<T, FindOnepostArgs>
-  ): CheckSelect<T, Prisma__postClient<post | null>, Prisma__postClient<postGetPayload<T> | null>>
+  findOne<T extends FindOnePostArgs>(
+    args: Subset<T, FindOnePostArgs>
+  ): CheckSelect<T, Prisma__PostClient<Post | null>, Prisma__PostClient<PostGetPayload<T> | null>>
   /**
    * Find zero or more Posts.
-   * @param {FindManypostArgs=} args - Arguments to filter and select certain fields only.
+   * @param {FindManyPostArgs=} args - Arguments to filter and select certain fields only.
    * @example
    * // Get all Posts
    * const posts = await prisma.post.findMany()
-   * 
+   *
    * // Get first 10 Posts
    * const posts = await prisma.post.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `uuid`
    * const postWithUuidOnly = await prisma.post.findMany({ select: { uuid: true } })
-   * 
+   *
   **/
-  findMany<T extends FindManypostArgs>(
-    args?: Subset<T, FindManypostArgs>
-  ): CheckSelect<T, Promise<Array<post>>, Promise<Array<postGetPayload<T>>>>
+  findMany<T extends FindManyPostArgs>(
+    args?: Subset<T, FindManyPostArgs>
+  ): CheckSelect<T, Promise<Array<Post>>, Promise<Array<PostGetPayload<T>>>>
   /**
    * Create a Post.
-   * @param {postCreateArgs} args - Arguments to create a Post.
+   * @param {PostCreateArgs} args - Arguments to create a Post.
    * @example
    * // Create one Post
    * const Post = await prisma.post.create({
@@ -925,14 +1070,14 @@ export interface postDelegate {
    *     // ... data to create a Post
    *   }
    * })
-   * 
+   *
   **/
-  create<T extends postCreateArgs>(
-    args: Subset<T, postCreateArgs>
-  ): CheckSelect<T, Prisma__postClient<post>, Prisma__postClient<postGetPayload<T>>>
+  create<T extends PostCreateArgs>(
+    args: Subset<T, PostCreateArgs>
+  ): CheckSelect<T, Prisma__PostClient<Post>, Prisma__PostClient<PostGetPayload<T>>>
   /**
    * Delete a Post.
-   * @param {postDeleteArgs} args - Arguments to delete one Post.
+   * @param {PostDeleteArgs} args - Arguments to delete one Post.
    * @example
    * // Delete one Post
    * const Post = await prisma.post.delete({
@@ -940,14 +1085,14 @@ export interface postDelegate {
    *     // ... filter to delete one Post
    *   }
    * })
-   * 
+   *
   **/
-  delete<T extends postDeleteArgs>(
-    args: Subset<T, postDeleteArgs>
-  ): CheckSelect<T, Prisma__postClient<post>, Prisma__postClient<postGetPayload<T>>>
+  delete<T extends PostDeleteArgs>(
+    args: Subset<T, PostDeleteArgs>
+  ): CheckSelect<T, Prisma__PostClient<Post>, Prisma__PostClient<PostGetPayload<T>>>
   /**
    * Update one Post.
-   * @param {postUpdateArgs} args - Arguments to update one Post.
+   * @param {PostUpdateArgs} args - Arguments to update one Post.
    * @example
    * // Update one Post
    * const post = await prisma.post.update({
@@ -958,14 +1103,14 @@ export interface postDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
-  update<T extends postUpdateArgs>(
-    args: Subset<T, postUpdateArgs>
-  ): CheckSelect<T, Prisma__postClient<post>, Prisma__postClient<postGetPayload<T>>>
+  update<T extends PostUpdateArgs>(
+    args: Subset<T, PostUpdateArgs>
+  ): CheckSelect<T, Prisma__PostClient<Post>, Prisma__PostClient<PostGetPayload<T>>>
   /**
    * Delete zero or more Posts.
-   * @param {postDeleteManyArgs} args - Arguments to filter Posts to delete.
+   * @param {PostDeleteManyArgs} args - Arguments to filter Posts to delete.
    * @example
    * // Delete a few Posts
    * const { count } = await prisma.post.deleteMany({
@@ -973,14 +1118,14 @@ export interface postDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
-  deleteMany<T extends postDeleteManyArgs>(
-    args: Subset<T, postDeleteManyArgs>
+  deleteMany<T extends PostDeleteManyArgs>(
+    args: Subset<T, PostDeleteManyArgs>
   ): Promise<BatchPayload>
   /**
    * Update zero or more Posts.
-   * @param {postUpdateManyArgs} args - Arguments to update one or more rows.
+   * @param {PostUpdateManyArgs} args - Arguments to update one or more rows.
    * @example
    * // Update many Posts
    * const post = await prisma.post.updateMany({
@@ -991,14 +1136,14 @@ export interface postDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
-  updateMany<T extends postUpdateManyArgs>(
-    args: Subset<T, postUpdateManyArgs>
+  updateMany<T extends PostUpdateManyArgs>(
+    args: Subset<T, PostUpdateManyArgs>
   ): Promise<BatchPayload>
   /**
    * Create or update one Post.
-   * @param {postUpsertArgs} args - Arguments to update or create a Post.
+   * @param {PostUpsertArgs} args - Arguments to update or create a Post.
    * @example
    * // Update or create a Post
    * const post = await prisma.post.upsert({
@@ -1013,24 +1158,29 @@ export interface postDelegate {
    *   }
    * })
   **/
-  upsert<T extends postUpsertArgs>(
-    args: Subset<T, postUpsertArgs>
-  ): CheckSelect<T, Prisma__postClient<post>, Prisma__postClient<postGetPayload<T>>>
+  upsert<T extends PostUpsertArgs>(
+    args: Subset<T, PostUpsertArgs>
+  ): CheckSelect<T, Prisma__PostClient<Post>, Prisma__PostClient<PostGetPayload<T>>>
   /**
    * Count
    */
-  count(args?: Omit<FindManypostArgs, 'select' | 'include'>): Promise<number>
+  count(args?: Omit<FindManyPostArgs, 'select' | 'include'>): Promise<number>
 
+
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregatePostArgs>(args: Subset<T, AggregatePostArgs>): Promise<GetPostAggregateType<T>>
 
 }
 
 /**
- * The delegate class that acts as a "Promise-like" for post.
+ * The delegate class that acts as a "Promise-like" for Post.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
-export declare class Prisma__postClient<T> implements Promise<T> {
+export declare class Prisma__PostClient<T> implements Promise<T> {
   private readonly _dmmf;
   private readonly _fetcher;
   private readonly _queryType;
@@ -1075,176 +1225,176 @@ export declare class Prisma__postClient<T> implements Promise<T> {
 // Custom InputTypes
 
 /**
- * post findOne
+ * Post findOne
  */
-export type FindOnepostArgs = {
+export type FindOnePostArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * Filter, which post to fetch.
+   * Filter, which Post to fetch.
   **/
-  where: postWhereUniqueInput
+  where: PostWhereUniqueInput
 }
 
 
 /**
- * post findMany
+ * Post findMany
  */
-export type FindManypostArgs = {
+export type FindManyPostArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * Filter, which posts to fetch.
+   * Filter, which Posts to fetch.
   **/
-  where?: postWhereInput
+  where?: PostWhereInput
   /**
-   * Determine the order of the posts to fetch.
+   * Determine the order of the Posts to fetch.
   **/
-  orderBy?: postOrderByInput
+  orderBy?: PostOrderByInput
   /**
-   * Sets the position for listing posts.
+   * Sets the position for listing Posts.
   **/
-  cursor?: postWhereUniqueInput
+  cursor?: PostWhereUniqueInput
   /**
-   * The number of posts to fetch. If negative number, it will take posts before the `cursor`.
+   * The number of Posts to fetch. If negative number, it will take Posts before the `cursor`.
   **/
   take?: number
   /**
-   * Skip the first `n` posts.
+   * Skip the first `n` Posts.
   **/
   skip?: number
 }
 
 
 /**
- * post create
+ * Post create
  */
-export type postCreateArgs = {
+export type PostCreateArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * The data needed to create a post.
+   * The data needed to create a Post.
   **/
-  data: postCreateInput
+  data: PostCreateInput
 }
 
 
 /**
- * post update
+ * Post update
  */
-export type postUpdateArgs = {
+export type PostUpdateArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * The data needed to update a post.
+   * The data needed to update a Post.
   **/
-  data: postUpdateInput
+  data: PostUpdateInput
   /**
-   * Choose, which post to update.
+   * Choose, which Post to update.
   **/
-  where: postWhereUniqueInput
+  where: PostWhereUniqueInput
 }
 
 
 /**
- * post updateMany
+ * Post updateMany
  */
-export type postUpdateManyArgs = {
-  data: postUpdateManyMutationInput
-  where?: postWhereInput
+export type PostUpdateManyArgs = {
+  data: PostUpdateManyMutationInput
+  where?: PostWhereInput
 }
 
 
 /**
- * post upsert
+ * Post upsert
  */
-export type postUpsertArgs = {
+export type PostUpsertArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * The filter to search for the post to update in case it exists.
+   * The filter to search for the Post to update in case it exists.
   **/
-  where: postWhereUniqueInput
+  where: PostWhereUniqueInput
   /**
-   * In case the post found by the `where` argument doesn't exist, create a new post with this data.
+   * In case the Post found by the `where` argument doesn't exist, create a new Post with this data.
   **/
-  create: postCreateInput
+  create: PostCreateInput
   /**
-   * In case the post was found with the provided `where` argument, update it with this data.
+   * In case the Post was found with the provided `where` argument, update it with this data.
   **/
-  update: postUpdateInput
+  update: PostUpdateInput
 }
 
 
 /**
- * post delete
+ * Post delete
  */
-export type postDeleteArgs = {
+export type PostDeleteArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
   /**
-   * Filter which post to delete.
+   * Filter which Post to delete.
   **/
-  where: postWhereUniqueInput
+  where: PostWhereUniqueInput
 }
 
 
 /**
- * post deleteMany
+ * Post deleteMany
  */
-export type postDeleteManyArgs = {
-  where?: postWhereInput
+export type PostDeleteManyArgs = {
+  where?: PostWhereInput
 }
 
 
 /**
- * post without action
+ * Post without action
  */
-export type postArgs = {
+export type PostArgs = {
   /**
-   * Select specific fields to fetch from the post
+   * Select specific fields to fetch from the Post
   **/
-  select?: postSelect | null
+  select?: PostSelect | null
   /**
    * Choose, which related nodes to fetch as well.
   **/
-  include?: postInclude | null
+  include?: PostInclude | null
 }
 
 
@@ -1257,6 +1407,64 @@ export type Category = {
   name: string
   slug: string
   number: number
+}
+
+
+export type AggregateCategory = {
+  count: number
+  avg: CategoryAvgAggregateOutputType | null
+  sum: CategorySumAggregateOutputType | null
+  min: CategoryMinAggregateOutputType | null
+  max: CategoryMaxAggregateOutputType | null
+}
+
+export type CategoryAvgAggregateOutputType = {
+  number: number
+}
+
+export type CategorySumAggregateOutputType = {
+  number: number
+}
+
+export type CategoryMinAggregateOutputType = {
+  number: number
+}
+
+export type CategoryMaxAggregateOutputType = {
+  number: number
+}
+
+
+export type CategoryAvgAggregateInputType = {
+  number?: true
+}
+
+export type CategorySumAggregateInputType = {
+  number?: true
+}
+
+export type CategoryMinAggregateInputType = {
+  number?: true
+}
+
+export type CategoryMaxAggregateInputType = {
+  number?: true
+}
+
+export type AggregateCategoryArgs = {
+  count?: true
+  avg?: CategoryAvgAggregateInputType
+  sum?: CategorySumAggregateInputType
+  min?: CategoryMinAggregateInputType
+  max?: CategoryMaxAggregateInputType
+}
+
+export type GetCategoryAggregateType<T extends AggregateCategoryArgs> = {
+  [P in keyof T]: P extends 'count' ? number : GetCategoryAggregateScalarType<T[P]>
+}
+
+export type GetCategoryAggregateScalarType<T extends any> = {
+  [P in keyof T]: P extends keyof CategoryAvgAggregateOutputType ? CategoryAvgAggregateOutputType[P] : never
 }
 
 
@@ -1276,11 +1484,11 @@ export type CategoryGetPayload<
   ? never
   : S extends CategoryArgs | FindManyCategoryArgs
   ? 'include' extends U
-    ? Category 
+    ? Category
   : 'select' extends U
     ? {
       [P in TrueKeys<S['select']>]:P extends keyof Category ? Category[P]
-: 
+:
  never
     }
   : Category
@@ -1308,13 +1516,13 @@ export interface CategoryDelegate {
    * @example
    * // Get all Categories
    * const categories = await prisma.category.findMany()
-   * 
+   *
    * // Get first 10 Categories
    * const categories = await prisma.category.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `name`
    * const categoryWithNameOnly = await prisma.category.findMany({ select: { name: true } })
-   * 
+   *
   **/
   findMany<T extends FindManyCategoryArgs>(
     args?: Subset<T, FindManyCategoryArgs>
@@ -1329,7 +1537,7 @@ export interface CategoryDelegate {
    *     // ... data to create a Category
    *   }
    * })
-   * 
+   *
   **/
   create<T extends CategoryCreateArgs>(
     args: Subset<T, CategoryCreateArgs>
@@ -1344,7 +1552,7 @@ export interface CategoryDelegate {
    *     // ... filter to delete one Category
    *   }
    * })
-   * 
+   *
   **/
   delete<T extends CategoryDeleteArgs>(
     args: Subset<T, CategoryDeleteArgs>
@@ -1362,7 +1570,7 @@ export interface CategoryDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   update<T extends CategoryUpdateArgs>(
     args: Subset<T, CategoryUpdateArgs>
@@ -1377,7 +1585,7 @@ export interface CategoryDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
   deleteMany<T extends CategoryDeleteManyArgs>(
     args: Subset<T, CategoryDeleteManyArgs>
@@ -1395,7 +1603,7 @@ export interface CategoryDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   updateMany<T extends CategoryUpdateManyArgs>(
     args: Subset<T, CategoryUpdateManyArgs>
@@ -1426,12 +1634,17 @@ export interface CategoryDelegate {
   count(args?: Omit<FindManyCategoryArgs, 'select' | 'include'>): Promise<number>
 
 
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregateCategoryArgs>(args: Subset<T, AggregateCategoryArgs>): Promise<GetCategoryAggregateType<T>>
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for Category.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__CategoryClient<T> implements Promise<T> {
@@ -1635,6 +1848,23 @@ export type Patient = {
 }
 
 
+export type AggregatePatient = {
+  count: number
+}
+
+
+
+export type AggregatePatientArgs = {
+  count?: true
+}
+
+export type GetPatientAggregateType<T extends AggregatePatientArgs> = {
+  [P in keyof T]: P extends 'count' ? number : never
+}
+
+
+
+
 
 export type PatientSelect = {
   firstName?: boolean
@@ -1651,11 +1881,11 @@ export type PatientGetPayload<
   ? never
   : S extends PatientArgs | FindManyPatientArgs
   ? 'include' extends U
-    ? Patient 
+    ? Patient
   : 'select' extends U
     ? {
       [P in TrueKeys<S['select']>]:P extends keyof Patient ? Patient[P]
-: 
+:
  never
     }
   : Patient
@@ -1683,13 +1913,13 @@ export interface PatientDelegate {
    * @example
    * // Get all Patients
    * const patients = await prisma.patient.findMany()
-   * 
+   *
    * // Get first 10 Patients
    * const patients = await prisma.patient.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `firstName`
    * const patientWithFirstNameOnly = await prisma.patient.findMany({ select: { firstName: true } })
-   * 
+   *
   **/
   findMany<T extends FindManyPatientArgs>(
     args?: Subset<T, FindManyPatientArgs>
@@ -1704,7 +1934,7 @@ export interface PatientDelegate {
    *     // ... data to create a Patient
    *   }
    * })
-   * 
+   *
   **/
   create<T extends PatientCreateArgs>(
     args: Subset<T, PatientCreateArgs>
@@ -1719,7 +1949,7 @@ export interface PatientDelegate {
    *     // ... filter to delete one Patient
    *   }
    * })
-   * 
+   *
   **/
   delete<T extends PatientDeleteArgs>(
     args: Subset<T, PatientDeleteArgs>
@@ -1737,7 +1967,7 @@ export interface PatientDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   update<T extends PatientUpdateArgs>(
     args: Subset<T, PatientUpdateArgs>
@@ -1752,7 +1982,7 @@ export interface PatientDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
   deleteMany<T extends PatientDeleteManyArgs>(
     args: Subset<T, PatientDeleteManyArgs>
@@ -1770,7 +2000,7 @@ export interface PatientDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   updateMany<T extends PatientUpdateManyArgs>(
     args: Subset<T, PatientUpdateManyArgs>
@@ -1801,12 +2031,17 @@ export interface PatientDelegate {
   count(args?: Omit<FindManyPatientArgs, 'select' | 'include'>): Promise<number>
 
 
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregatePatientArgs>(args: Subset<T, AggregatePatientArgs>): Promise<GetPatientAggregateType<T>>
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for Patient.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__PatientClient<T> implements Promise<T> {
@@ -2010,6 +2245,23 @@ export type Movie = {
 }
 
 
+export type AggregateMovie = {
+  count: number
+}
+
+
+
+export type AggregateMovieArgs = {
+  count?: true
+}
+
+export type GetMovieAggregateType<T extends AggregateMovieArgs> = {
+  [P in keyof T]: P extends 'count' ? number : never
+}
+
+
+
+
 
 export type MovieSelect = {
   directorFirstName?: boolean
@@ -2039,7 +2291,7 @@ export type MovieGetPayload<
   : 'select' extends U
     ? {
       [P in TrueKeys<S['select']>]:P extends keyof Movie ? Movie[P]
-: 
+:
       P extends 'director'
       ? DirectorGetPayload<S['select'][P]> : never
     }
@@ -2068,13 +2320,13 @@ export interface MovieDelegate {
    * @example
    * // Get all Movies
    * const movies = await prisma.movie.findMany()
-   * 
+   *
    * // Get first 10 Movies
    * const movies = await prisma.movie.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `directorFirstName`
    * const movieWithDirectorFirstNameOnly = await prisma.movie.findMany({ select: { directorFirstName: true } })
-   * 
+   *
   **/
   findMany<T extends FindManyMovieArgs>(
     args?: Subset<T, FindManyMovieArgs>
@@ -2089,7 +2341,7 @@ export interface MovieDelegate {
    *     // ... data to create a Movie
    *   }
    * })
-   * 
+   *
   **/
   create<T extends MovieCreateArgs>(
     args: Subset<T, MovieCreateArgs>
@@ -2104,7 +2356,7 @@ export interface MovieDelegate {
    *     // ... filter to delete one Movie
    *   }
    * })
-   * 
+   *
   **/
   delete<T extends MovieDeleteArgs>(
     args: Subset<T, MovieDeleteArgs>
@@ -2122,7 +2374,7 @@ export interface MovieDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   update<T extends MovieUpdateArgs>(
     args: Subset<T, MovieUpdateArgs>
@@ -2137,7 +2389,7 @@ export interface MovieDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
   deleteMany<T extends MovieDeleteManyArgs>(
     args: Subset<T, MovieDeleteManyArgs>
@@ -2155,7 +2407,7 @@ export interface MovieDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   updateMany<T extends MovieUpdateManyArgs>(
     args: Subset<T, MovieUpdateManyArgs>
@@ -2186,12 +2438,17 @@ export interface MovieDelegate {
   count(args?: Omit<FindManyMovieArgs, 'select' | 'include'>): Promise<number>
 
 
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregateMovieArgs>(args: Subset<T, AggregateMovieArgs>): Promise<GetMovieAggregateType<T>>
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for Movie.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__MovieClient<T> implements Promise<T> {
@@ -2423,6 +2680,23 @@ export type Director = {
 }
 
 
+export type AggregateDirector = {
+  count: number
+}
+
+
+
+export type AggregateDirectorArgs = {
+  count?: true
+}
+
+export type GetDirectorAggregateType<T extends AggregateDirectorArgs> = {
+  [P in keyof T]: P extends 'count' ? number : never
+}
+
+
+
+
 
 export type DirectorSelect = {
   firstName?: boolean
@@ -2451,7 +2725,7 @@ export type DirectorGetPayload<
   : 'select' extends U
     ? {
       [P in TrueKeys<S['select']>]:P extends keyof Director ? Director[P]
-: 
+:
       P extends 'movies'
       ? Array<MovieGetPayload<S['select'][P]>> : never
     }
@@ -2480,13 +2754,13 @@ export interface DirectorDelegate {
    * @example
    * // Get all Directors
    * const directors = await prisma.director.findMany()
-   * 
+   *
    * // Get first 10 Directors
    * const directors = await prisma.director.findMany({ take: 10 })
-   * 
+   *
    * // Only select the `firstName`
    * const directorWithFirstNameOnly = await prisma.director.findMany({ select: { firstName: true } })
-   * 
+   *
   **/
   findMany<T extends FindManyDirectorArgs>(
     args?: Subset<T, FindManyDirectorArgs>
@@ -2501,7 +2775,7 @@ export interface DirectorDelegate {
    *     // ... data to create a Director
    *   }
    * })
-   * 
+   *
   **/
   create<T extends DirectorCreateArgs>(
     args: Subset<T, DirectorCreateArgs>
@@ -2516,7 +2790,7 @@ export interface DirectorDelegate {
    *     // ... filter to delete one Director
    *   }
    * })
-   * 
+   *
   **/
   delete<T extends DirectorDeleteArgs>(
     args: Subset<T, DirectorDeleteArgs>
@@ -2534,7 +2808,7 @@ export interface DirectorDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   update<T extends DirectorUpdateArgs>(
     args: Subset<T, DirectorUpdateArgs>
@@ -2549,7 +2823,7 @@ export interface DirectorDelegate {
    *     // ... provide filter here
    *   }
    * })
-   * 
+   *
   **/
   deleteMany<T extends DirectorDeleteManyArgs>(
     args: Subset<T, DirectorDeleteManyArgs>
@@ -2567,7 +2841,7 @@ export interface DirectorDelegate {
    *     // ... provide data here
    *   }
    * })
-   * 
+   *
   **/
   updateMany<T extends DirectorUpdateManyArgs>(
     args: Subset<T, DirectorUpdateManyArgs>
@@ -2598,12 +2872,17 @@ export interface DirectorDelegate {
   count(args?: Omit<FindManyDirectorArgs, 'select' | 'include'>): Promise<number>
 
 
+  /**
+   * Aggregate
+   */
+  aggregate<T extends AggregateDirectorArgs>(args: Subset<T, AggregateDirectorArgs>): Promise<GetDirectorAggregateType<T>>
+
 }
 
 /**
  * The delegate class that acts as a "Promise-like" for Director.
  * Why is this prefixed with `Prisma__`?
- * Because we want to prevent naming conflicts as mentioned in 
+ * Because we want to prevent naming conflicts as mentioned in
  * https://github.com/prisma/prisma-client-js/issues/707
  */
 export declare class Prisma__DirectorClient<T> implements Promise<T> {
@@ -2830,7 +3109,7 @@ export type DirectorArgs = {
  */
 
 
-export type postWhereInput = {
+export type PostWhereInput = {
   uuid?: string | UUIDFilter
   createdAt?: Date | string | DateTimeFilter
   updatedAt?: Date | string | DateTimeFilter
@@ -2840,9 +3119,9 @@ export type postWhereInput = {
   authorId?: number | IntFilter
   kind?: PostKind | NullablePostKindFilter | null
   metadata?: InputJsonValue | JsonFilter
-  AND?: Enumerable<postWhereInput>
-  OR?: Array<postWhereInput>
-  NOT?: Enumerable<postWhereInput>
+  AND?: Enumerable<PostWhereInput>
+  OR?: Array<PostWhereInput>
+  NOT?: Enumerable<PostWhereInput>
   author?: UserWhereInput | null
 }
 
@@ -2853,7 +3132,7 @@ export type UserWhereInput = {
   age?: number | IntFilter
   balance?: number | FloatFilter
   amount?: number | FloatFilter
-  posts?: postFilter | null
+  posts?: PostFilter | null
   role?: Role | RoleFilter
   AND?: Enumerable<UserWhereInput>
   OR?: Array<UserWhereInput>
@@ -2865,7 +3144,7 @@ export type UserWhereUniqueInput = {
   email?: string
 }
 
-export type postWhereUniqueInput = {
+export type PostWhereUniqueInput = {
   uuid?: string
 }
 
@@ -2938,7 +3217,7 @@ export type DirectorWhereUniqueInput = {
   firstName_lastName?: FirstNameLastNameCompoundUniqueInput
 }
 
-export type postCreateWithoutAuthorInput = {
+export type PostCreateWithoutAuthorInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2949,9 +3228,9 @@ export type postCreateWithoutAuthorInput = {
   metadata: InputJsonValue
 }
 
-export type postCreateManyWithoutAuthorInput = {
-  create?: Enumerable<postCreateWithoutAuthorInput>
-  connect?: Enumerable<postWhereUniqueInput>
+export type PostCreateManyWithoutAuthorInput = {
+  create?: Enumerable<PostCreateWithoutAuthorInput>
+  connect?: Enumerable<PostWhereUniqueInput>
 }
 
 export type UserCreateInput = {
@@ -2961,10 +3240,10 @@ export type UserCreateInput = {
   balance: number
   amount: number
   role: Role
-  posts?: postCreateManyWithoutAuthorInput | null
+  posts?: PostCreateManyWithoutAuthorInput | null
 }
 
-export type postUpdateWithoutAuthorDataInput = {
+export type PostUpdateWithoutAuthorDataInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -2975,12 +3254,12 @@ export type postUpdateWithoutAuthorDataInput = {
   metadata?: InputJsonValue
 }
 
-export type postUpdateWithWhereUniqueWithoutAuthorInput = {
-  where: postWhereUniqueInput
-  data: postUpdateWithoutAuthorDataInput
+export type PostUpdateWithWhereUniqueWithoutAuthorInput = {
+  where: PostWhereUniqueInput
+  data: PostUpdateWithoutAuthorDataInput
 }
 
-export type postScalarWhereInput = {
+export type PostScalarWhereInput = {
   uuid?: string | UUIDFilter
   createdAt?: Date | string | DateTimeFilter
   updatedAt?: Date | string | DateTimeFilter
@@ -2990,12 +3269,12 @@ export type postScalarWhereInput = {
   authorId?: number | IntFilter
   kind?: PostKind | NullablePostKindFilter | null
   metadata?: InputJsonValue | JsonFilter
-  AND?: Enumerable<postScalarWhereInput>
-  OR?: Array<postScalarWhereInput>
-  NOT?: Enumerable<postScalarWhereInput>
+  AND?: Enumerable<PostScalarWhereInput>
+  OR?: Array<PostScalarWhereInput>
+  NOT?: Enumerable<PostScalarWhereInput>
 }
 
-export type postUpdateManyDataInput = {
+export type PostUpdateManyDataInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3006,27 +3285,27 @@ export type postUpdateManyDataInput = {
   metadata?: InputJsonValue
 }
 
-export type postUpdateManyWithWhereNestedInput = {
-  where: postScalarWhereInput
-  data: postUpdateManyDataInput
+export type PostUpdateManyWithWhereNestedInput = {
+  where: PostScalarWhereInput
+  data: PostUpdateManyDataInput
 }
 
-export type postUpsertWithWhereUniqueWithoutAuthorInput = {
-  where: postWhereUniqueInput
-  update: postUpdateWithoutAuthorDataInput
-  create: postCreateWithoutAuthorInput
+export type PostUpsertWithWhereUniqueWithoutAuthorInput = {
+  where: PostWhereUniqueInput
+  update: PostUpdateWithoutAuthorDataInput
+  create: PostCreateWithoutAuthorInput
 }
 
-export type postUpdateManyWithoutAuthorInput = {
-  create?: Enumerable<postCreateWithoutAuthorInput>
-  connect?: Enumerable<postWhereUniqueInput>
-  set?: Enumerable<postWhereUniqueInput>
-  disconnect?: Enumerable<postWhereUniqueInput>
-  delete?: Enumerable<postWhereUniqueInput>
-  update?: Enumerable<postUpdateWithWhereUniqueWithoutAuthorInput>
-  updateMany?: Enumerable<postUpdateManyWithWhereNestedInput> | null
-  deleteMany?: Enumerable<postScalarWhereInput>
-  upsert?: Enumerable<postUpsertWithWhereUniqueWithoutAuthorInput>
+export type PostUpdateManyWithoutAuthorInput = {
+  create?: Enumerable<PostCreateWithoutAuthorInput>
+  connect?: Enumerable<PostWhereUniqueInput>
+  set?: Enumerable<PostWhereUniqueInput>
+  disconnect?: Enumerable<PostWhereUniqueInput>
+  delete?: Enumerable<PostWhereUniqueInput>
+  update?: Enumerable<PostUpdateWithWhereUniqueWithoutAuthorInput>
+  updateMany?: Enumerable<PostUpdateManyWithWhereNestedInput> | null
+  deleteMany?: Enumerable<PostScalarWhereInput>
+  upsert?: Enumerable<PostUpsertWithWhereUniqueWithoutAuthorInput>
 }
 
 export type UserUpdateInput = {
@@ -3037,7 +3316,7 @@ export type UserUpdateInput = {
   balance?: number
   amount?: number
   role?: Role
-  posts?: postUpdateManyWithoutAuthorInput | null
+  posts?: PostUpdateManyWithoutAuthorInput | null
 }
 
 export type UserUpdateManyMutationInput = {
@@ -3064,7 +3343,7 @@ export type UserCreateOneWithoutPostsInput = {
   connect?: UserWhereUniqueInput
 }
 
-export type postCreateInput = {
+export type PostCreateInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3098,7 +3377,7 @@ export type UserUpdateOneRequiredWithoutPostsInput = {
   upsert?: UserUpsertWithoutPostsInput
 }
 
-export type postUpdateInput = {
+export type PostUpdateInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3110,7 +3389,7 @@ export type postUpdateInput = {
   author?: UserUpdateOneRequiredWithoutPostsInput | null
 }
 
-export type postUpdateManyMutationInput = {
+export type PostUpdateManyMutationInput = {
   uuid?: string
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -3361,10 +3640,10 @@ export type FloatFilter = {
   gte?: number
 }
 
-export type postFilter = {
-  every?: postWhereInput
-  some?: postWhereInput
-  none?: postWhereInput
+export type PostFilter = {
+  every?: PostWhereInput
+  some?: PostWhereInput
+  none?: PostWhereInput
 }
 
 export type RoleFilter = {
@@ -3390,7 +3669,7 @@ export type UserOrderByInput = {
   role?: OrderByArg | null
 }
 
-export type postOrderByInput = {
+export type PostOrderByInput = {
   uuid?: OrderByArg | null
   createdAt?: OrderByArg | null
   updatedAt?: OrderByArg | null
